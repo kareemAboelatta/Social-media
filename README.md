@@ -9,7 +9,20 @@ I used most of Clean code tips with android, SOLID principles and design-pattern
 ## Clean Architecture maximizes the use of SOLID principles and we used all of them: 
 ## Single Responsibility
 Each software component should have only one reason to change – one responsibility.
-So whatever **class** you have or whatever **function** you have these functions and classes should always only have one **single responsibility** and one reason to change.
+So whatever **class** you have or whatever **function** you have these functions and classes should always only have one **single responsibility** and **one reason** to change.
+
+```kotlin
+class RepositoryImp @Inject constructor(
+    private var database: Database
+) : Repository {
+    // I have one responsibility and it's just get post from database and return list of posts
+    override suspend fun getPosts(): List<Post> = database.getAllPosts()
+    
+    override fun getUser(): User {
+        TODO("Not yet implemented")
+    }
+}
+```
 
 ## Open-closed
 - You should be able to extend the behavior of a component, without breaking its usage, or modifying its extensions.
