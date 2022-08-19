@@ -23,7 +23,7 @@ If you have a class of one type, and any subclasses of that class, you should be
 ## Interface Segregation:
 It’s better to have many smaller interfaces than a large one, to prevent the class from implementing the methods that it actually doesn’t need.
 - Note we can do that by making a body for this method in `Kotlin` like this:
-```
+```kotlin
 interface RepositoryAuth {
      fun notImportantForAll(){}
 }
@@ -32,7 +32,7 @@ interface RepositoryAuth {
 ## Dependency Inversion: 
 Components should depend on abstractions rather than concrete implementations. Also higher level modules shouldn’t depend on lower level modules.
 - See This example :
-```
+```kotlin
 interface Database {
     suspend fun setUserDataInfoOnDatabase(user: User): Task<Void>
     suspend fun getCurrentUserData(id: String): User
@@ -86,7 +86,7 @@ class DatabaseFromCustomApi : Database {
 
 ```
 - Now **We depended on abstractions (Database interface) and not on concretions (like Firebase or Custom Api)** by this way the Datebase interface now is a replaceable with its childern class and we will make our reposiory class take Database interface as argument like this:
-```
+```kotlin
 class RepositoryImp @Inject constructor(
     private var database: Database                      //abstractions (firebase or your custom api)
    // private var refDatabase: DatabaseReference       // concretions (just for firebase)
