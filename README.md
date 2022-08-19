@@ -31,7 +31,7 @@ interface RepositoryAuth {
 
 ## Dependency Inversion: 
 Components should depend on abstractions rather than concrete implementations. Also higher level modules shouldn’t depend on lower level modules.
-- For example :
+- See This example :
 ```
 interface Database {
     suspend fun setUserDataInfoOnDatabase(user: User): Task<Void>
@@ -85,7 +85,21 @@ class DatabaseFromCustomApi : Database {
 }
 
 ```
-- In another word **we should depend on abstractions and not on concretions**
+- Now **We depended on abstractions (Database interface) and not on concretions (like Firebase or Custom Api)** by this way the Datebase interface now is a replaceable with its childern class and we will make our reposiory class take Database interface as argument like this:
+```
+class RepositoryImp @Inject constructor(
+    private var database: Database                      //abstractions (firebase or your custom api)
+   // private var refDatabase: DatabaseReference       // concretions (just for firebase)
+) : Repository {
+    
+    override fun getUser(): User {
+        TODO("Not yet implemented")
+    }
+    
+    override suspend fun getPosts(): List<Post> = database.getAllPosts()
+    
+}
+```
 
 
 
