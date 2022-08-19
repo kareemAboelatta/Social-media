@@ -12,7 +12,7 @@ Each software component should have only one reason to change – one responsibi
 So whatever class you have or whatever function you have these functions and classes should always only have one single responsibility and one reason to change.
 
 ## Open-closed:
-You should be able to extend the behavior of a component, without breaking its usage, or modifying its extensions.
-for example in the project we have a Repository interface and RepositoryImp class implements its methods 
-now if we want to modify something or add a function \n dd
+- You should be able to extend the behavior of a component, without breaking its usage, or modifying its extensions.
+for example in the project we have a Repository interface and RepositoryImp class which is extend or implement Repository interface methods 
+now if we want to modify something or add a function for example 
 
