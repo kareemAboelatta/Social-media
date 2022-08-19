@@ -28,8 +28,8 @@ class RepositoryImp @Inject constructor(
 
 ## :star: Open-closed
 - You should be able to extend the behavior of a component, without breaking its usage, or modifying its extensions.
-- For example in this project we have a **Database interface** and **DatabaseFromFirebase class** which is extend or implement **Database interface** methods. **Now** if we want to modify something or add a function for example we can do in (**Child**) class.
-- Now you **opened** your *Database interface* **to extention**, anyone wants to add or modify something he will extend your *Database interface* and add what he want in his own child class (*DatabaseFromFirebase class*). and your class is **closed to modification**.
+- For example in this project we have a **Database interface** and **DatabaseFromFirebase class** which is extend or implement **Database interface** methods. **Now** if we want to modify something or add a function for example we can do in (**Child**):baby: class.
+- Now you **opened** your *Database interface* **to extention**, anyone wants to add or modify something he will extend your *Database interface* and add what he want in his own child class :baby: (*DatabaseFromFirebase class*). and your class is **closed to modification**.
 
 ```kotlin
 interface Database {
@@ -71,7 +71,7 @@ class DatabaseFromFirebase @Inject constructor(
 
 ## :star: Liskov Substitution 
 If you have a class of one type, and any subclasses of that class, you should be able to represent the base class usage with the subclass, without breaking the app.
-- We do that [here](https://github.com/kareemAboelatta/Social-media/blob/d03bc0e318f3d0787569c5e16608346c774bf80c/app/src/main/java/com/example/socialmedia/di/RepositoryModule.kt#L64) when we inject RepositoryImp() from RepositoryImp (**Child**) Type whith provideMainRepository function which is return type of it Repository(**Parent**).
+- We do that [here](https://github.com/kareemAboelatta/Social-media/blob/d03bc0e318f3d0787569c5e16608346c774bf80c/app/src/main/java/com/example/socialmedia/di/RepositoryModule.kt#L64) when we inject RepositoryImp() from RepositoryImp (**Child**) :baby: Type whith provideMainRepository function which is return type of it Repository(**Parent**):man:.
 
 ```kotlin
     @Singleton
