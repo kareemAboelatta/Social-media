@@ -24,8 +24,8 @@ If you have a class of one type, and any subclasses of that class, you should be
     @Singleton
     @Provides
     fun provideMainRepository(
-        database: Database  
-    ): Repository = RepositoryImp(database) //function return type is Repository 'Parent' and this able to return RepositoryImp instead  
+        database: Database //function return type is Repository 'Parent' and this able to return RepositoryImp instead  
+    ): Repository = RepositoryImp(database) 
 
 ```
 
