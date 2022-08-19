@@ -92,7 +92,7 @@ interface RepositoryAuth {
      fun notImportantForAll(){}
 }
 ```
-
+</br>
 ## :star: Dependency Inversion
 Components should depend on abstractions rather than concrete implementations. Also higher level modules shouldn’t depend on lower level modules.
 - See This example :
