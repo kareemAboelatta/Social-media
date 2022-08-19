@@ -81,7 +81,7 @@ If you have a class of one type, and any subclasses of that class, you should be
     ): Repository = RepositoryImp(database) //function return type is Repository 'Parent' and this able to return RepositoryImp instead  
 
 ```
-- Now the parent class :man: is  replaceable by their subclasses :baby::baby: and that without altering the behavior so that again
+- Now the parent class(Repository) :man: is  replaceable by their subclasses (RepositoryImp) :baby::baby: and that without altering the behavior so that again
 
 ## :star: Interface Segregation
 - It’s better to have many smaller interfaces than a large one, to prevent the class from implementing the methods that it actually doesn’t need.
