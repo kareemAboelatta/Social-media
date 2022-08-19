@@ -26,8 +26,46 @@ class RepositoryImp @Inject constructor(
 
 ## Open-closed
 - You should be able to extend the behavior of a component, without breaking its usage, or modifying its extensions.
-- For example in the project we have a [**Repository interface**](https://github.com/kareemAboelatta/Social-media/blob/master/app/src/main/java/com/example/socialmedia/main/domain/Repository.kt) and [**RepositoryImp class**](https://github.com/kareemAboelatta/Social-media/blob/master/app/src/main/java/com/example/socialmedia/main/data/models/repository/RepositoryImp.kt) which is extend or implement           **Repository interface** methods **now** if we want to modify something or add a function for example.
-- Now you **opened** your *Repository* to **extention**, anyone wants to add or modify something he will extend your *Repository* and add what he want in his own child class (*RepositoryImp class*). and your class is **closed to modification**.
+- For example in this project we have a **Database interface** and **DatabaseFromFirebase class** which is extend or implement **Database interface** methods. **Now** if we want to modify something or add a function for example we can do in (**Child**) class.
+- Now you **opened** your *Database interface* **to extention**, anyone wants to add or modify something he will extend your *Database interface* and add what he want in his own child class (*DatabaseFromFirebase class*). and your class is **closed to modification**.
+
+```kotlin
+interface Database {
+    suspend fun setUserDataInfoOnDatabase(user: User): Task<Void>
+    suspend fun getCurrentUserData(id: String): User
+    suspend fun getAllUsers(): List<User>
+    suspend fun getAllPosts(): List<Post>
+}
+
+// this is your own implementation of the Database interface do whatever you want here
+class DatabaseFromFirebase @Inject constructor(
+    private var databaseRef: DatabaseReference,
+    ) : Database {
+    
+    override suspend fun getAllPosts(): List<Post> {
+        return databaseRef.child(Constants.POSTS).get().await()
+            .children.map {
+                it.getValue(Post::class.java)!!
+            }
+    }
+    override suspend fun setUserDataInfoOnDatabase(user: User): Task<Void> {
+        return databaseRef.child("users").child(user.id).setValue(user)
+    }
+
+    override suspend fun getCurrentUserData(id: String): User {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllUsers(): List<User> {
+        TODO("Not yet implemented")
+    }
+}
+
+```
+
+
+
+
 
 ## Liskov Substitution 
 If you have a class of one type, and any subclasses of that class, you should be able to represent the base class usage with the subclass, without breaking the app.
