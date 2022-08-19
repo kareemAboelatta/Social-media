@@ -6,7 +6,7 @@ I used most of Clean code tips with android, SOLID principles and design-pattern
 - I have written about how to architect android application using the Uncle Bob's clean architecture approach. and what's this architecture and why we should use an architecture [here](https://github.com/kareemAboelatta/Clean-architecture).
 - **And this an old project but i made it again with Uncle Bob's clean architecture approach Let's go and see what's the new here.**
 
-## Clean Architecture maximizes the use of SOLID principles and we used all of them let's see: 
+## <img src="https://media.giphy.com/media/5WILqPq29TyIkVCSej/giphy.gif" width="50"> Clean Architecture maximizes the use of SOLID principles and we used all of them let's see: 
 ## Single Responsibility
 Each software component should have only one reason to change – one responsibility.
 So whatever **class** you have or whatever **function** you have these functions and classes should always only have one **single responsibility** and **one reason** to change.
