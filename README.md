@@ -147,7 +147,7 @@ class DatabaseFromCustomApi : Database {
 }
 
 ```
-- Now We can depended on **abstractions (Database interface)** and not on **concretions (like Firebase or Custom Api)** by this way. The Datebase interface now is a **replaceable** with its childern classes and we will make our reposiory class take Database interface as argument like this:
+- Now We can depended on **abstractions (Database interface)** and not on **concretions (like Firebase or Custom Api)** by this way. The Datebase interface now is a **replaceable** with its childern classes and we will make our reposiory class take Database interface as argument like this: :heart:
 ```kotlin
 class RepositoryImp @Inject constructor(
     private var database: Database                      //abstractions (firebase or your custom api)
