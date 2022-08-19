@@ -20,6 +20,15 @@ So whatever **class** you have or whatever **function** you have these functions
 If you have a class of one type, and any subclasses of that class, you should be able to represent the base class usage with the subclass, without breaking the app.
 - We do that [here](https://github.com/kareemAboelatta/Social-media/blob/d03bc0e318f3d0787569c5e16608346c774bf80c/app/src/main/java/com/example/socialmedia/di/RepositoryModule.kt#L64) when we inject RepositoryImp() from RepositoryImp (**Child**) Type whith provideMainRepository function which is return type of it Repository(**Parent**).
 
+```kotlin
+    @Singleton
+    @Provides
+    fun provideMainRepository(
+        database: Database  
+    ): Repository = RepositoryImp(database) //function return type is Repository 'Parent' and this able to return RepositoryImp instead  
+
+```
+
 ## Interface Segregation
 It’s better to have many smaller interfaces than a large one, to prevent the class from implementing the methods that it actually doesn’t need.
 - Note we can do that by making a body for this method in `Kotlin` like this:
