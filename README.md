@@ -30,8 +30,8 @@ If you have a class of one type, and any subclasses of that class, you should be
 ```
 
 ## Interface Segregation
-It’s better to have many smaller interfaces than a large one, to prevent the class from implementing the methods that it actually doesn’t need.
-- Note we can do that by making a body for this method in `Kotlin` like this:
+- It’s better to have many smaller interfaces than a large one, to prevent the class from implementing the methods that it actually doesn’t need.
+- Note we can do that by making a default body for this method in `Kotlin` like this:
 ```kotlin
 interface RepositoryAuth {
      fun notImportantForAll(){}
