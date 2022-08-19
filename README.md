@@ -22,7 +22,15 @@ If you have a class of one type, and any subclasses of that class, you should be
 
 ## Interface Segregation:
 It’s better to have many smaller interfaces than a large one, to prevent the class from implementing the methods that it actually doesn’t need.
-- Note we can do that by making a body for this method in Kotlin
+- Note we can do that by making a body for this method in `Kotlin` like this:
+```
+ {
+    interface RepositoryAuth {
+     fun isUserLoggedIn(): Boolean {}
+
+    }
+}
+```
 
 ## Dependency Inversion: 
 Components should depend on abstractions rather than concrete implementations. Also higher level modules shouldn’t depend on lower level modules.
