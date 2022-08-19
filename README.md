@@ -1,4 +1,4 @@
-# <img src="[https://media.giphy.com/media/5WILqPq29TyIkVCSej/giphy.gif](https://octodex.github.com/daftpunktocat-guy/)" width="50"> Social-media
+# <img src="https://octodex.github.com/daftpunktocat-guy/" width="50"> Social-media
 Is a new version of code for my [Social media app](https://github.com/kareemAboelatta/social-media-app) with Clean Architecture. 
 I used most of Clean code tips with android, SOLID principles and design-patterns..
 
