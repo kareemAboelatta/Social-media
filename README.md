@@ -165,5 +165,5 @@ class RepositoryImp @Inject constructor(
     
 }
 ```
-- Now it's to easy if we want to *convert* from firebase to custom api and vice versa *because our repository don't now what's firebase or what's api*, Because it's take **atractions** not **concretions** .
+- :heart: Now it's to easy if we want to *convert* from firebase to custom api and vice versa *because our repository don't now what's firebase or what's api*, Because it's take **atractions** not **concretions** .
 
