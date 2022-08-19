@@ -10,6 +10,8 @@ I used most of Clean code tips with android, SOLID principles and design-pattern
 ## Single Responsibility
 Each software component should have only one reason to change – one responsibility.
 So whatever **class** you have or whatever **function** you have these functions and classes should always only have one **single responsibility** and **one reason** to change.
+> for example getPosts function ! 🤩
+
 
 ```kotlin
 class RepositoryImp @Inject constructor(
