@@ -14,7 +14,7 @@ So whatever **class** you have or whatever **function** you have these functions
 ## Open-closed:
 - You should be able to extend the behavior of a component, without breaking its usage, or modifying its extensions.
 - For example in the project we have a [**Repository interface**](https://github.com/kareemAboelatta/Social-media/blob/master/app/src/main/java/com/example/socialmedia/main/domain/Repository.kt) and [**RepositoryImp class**](https://github.com/kareemAboelatta/Social-media/blob/master/app/src/main/java/com/example/socialmedia/main/data/models/repository/RepositoryImp.kt) which is extend or implement           **Repository interface** methods **now** if we want to modify something or add a function for example.
-- Now you **opened** your *Repository** to **extention**, anyone wants to add or modify something he will extend your *Repository* and add what he want in his own child class (*RepositoryImp class*). and your class is **closed to modification**.
+- Now you **opened** your *Repository* to **extention**, anyone wants to add or modify something he will extend your *Repository* and add what he want in his own child class (*RepositoryImp class*). and your class is **closed to modification**.
 
 
 
