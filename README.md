@@ -27,7 +27,6 @@ It’s better to have many smaller interfaces than a large one, to prevent the c
 interface RepositoryAuth {
      fun notImportantForAll(){}
 }
-
 ```
 
 ## Dependency Inversion: 
