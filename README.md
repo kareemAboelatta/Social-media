@@ -33,7 +33,7 @@ class RepositoryImp @Inject constructor(
 
 ```kotlin
 interface Database {
-    suspend fun setUserDataInfoOnDatabase(user: User): Task<Void>
+    suspend fun setUserDataInfoOnDatabase(user: User)
     suspend fun getCurrentUserData(id: String): User
     suspend fun getAllUsers(): List<User>
     suspend fun getAllPosts(): List<Post>
@@ -43,6 +43,8 @@ interface Database {
 class DatabaseFromFirebase @Inject constructor(
     private var databaseRef: DatabaseReference,
     ) : Database {
+
+    //extra functions ...
     
     override suspend fun getAllPosts(): List<Post> {
         return databaseRef.child(Constants.POSTS).get().await()
@@ -50,8 +52,8 @@ class DatabaseFromFirebase @Inject constructor(
                 it.getValue(Post::class.java)!!
             }
     }
-    override suspend fun setUserDataInfoOnDatabase(user: User): Task<Void> {
-        return databaseRef.child("users").child(user.id).setValue(user)
+    override suspend fun setUserDataInfoOnDatabase(user: User) {
+        databaseRef.child("users").child(user.id).setValue(user).await()
     }
 
     override suspend fun getCurrentUserData(id: String): User {
@@ -62,7 +64,6 @@ class DatabaseFromFirebase @Inject constructor(
         TODO("Not yet implemented")
     }
 }
-
 ```
 
 
@@ -100,8 +101,7 @@ Components should depend on abstractions rather than concrete implementations. A
 ```kotlin
 
 /*
-As a abstractions, if want to get the database from the Mars, 
-I don't care just implement this interface 
+As a abstractions, if want to get the database from the Mars, I don't care just implement this interface 
 and do what you want in your own class and suit concretion (firebase, api,etc..)
 */
 interface Database {
