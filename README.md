@@ -14,12 +14,14 @@ So whatever **class** you have or whatever **function** you have these functions
 
 
 ```kotlin
+// I have one responsibility and it's just get important data from database like user data or posts
 class RepositoryImp @Inject constructor(
     private var database: Database
 ) : Repository {
     // I have one responsibility and it's just get post from database and return list of posts
     override suspend fun getPosts(): List<Post> = database.getAllPosts()
     
+        // I have one responsibility and it's just get current user from database and return it as User Object
     override fun getUser(): User {
         TODO("Not yet implemented")
     }
