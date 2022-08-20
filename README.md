@@ -99,9 +99,15 @@ Components should depend on abstractions rather than concrete implementations. A
 - See This example :
 ```kotlin
 
-//As a atractions, if want to get the database from the Mars, I don't care just implement this interface and do what you want in your own class and suit concretions(firebase, api,etc..)
+/*
+As a abstractions, if want to get the database from the Mars, 
+I don't care just implement this interface 
+and do what you want in your own class and suit concretions(firebase, api,etc..)
+*/
 interface Database {
+
     suspend fun setUserDataInfoOnDatabase(user: User)
+
     suspend fun getCurrentUserData(id: String): User
     suspend fun getAllUsers(): List<User>
     suspend fun getAllPosts(): List<Post>
@@ -149,7 +155,6 @@ class DatabaseFromCustomApi : Database {
     }
 
 }
-
 
 ```
 - Now We can depended on **abstractions (Database interface)** and not on **concretions (like Firebase or Custom Api)** by this way. The Datebase interface now is a **replaceable** with its childern classes and we will make our reposiory class take Database interface as argument like this: :heart:
