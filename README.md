@@ -98,29 +98,19 @@ interface RepositoryAuth {
 Components should depend on abstractions rather than concrete implementations. Also higher level modules shouldn’t depend on lower level modules.
 - See This example :
 ```kotlin
+
+//As a atractions, if want to get the database from the Mars, I don't care just implement this interface and do what you want in your own class and suit concretions(firebase, api,etc..)
 interface Database {
-    suspend fun setUserDataInfoOnDatabase(user: User): Task<Void>
+    suspend fun setUserDataInfoOnDatabase(user: User)
     suspend fun getCurrentUserData(id: String): User
     suspend fun getAllUsers(): List<User>
     suspend fun getAllPosts(): List<Post>
 }
 
+// this is your own implementation of the Database interface do whatever you want here
 class DatabaseFromFirebase @Inject constructor(
     private var databaseRef: DatabaseReference,
     ) : Database {
-
-    override suspend fun setUserDataInfoOnDatabase(user: User): Task<Void> {
-        return databaseRef.child("users").child(user.id).setValue(user)
-    }
-
-    override suspend fun getCurrentUserData(id: String): User {
-        TODO("Not yet implemented")
-
-    }
-
-    override suspend fun getAllUsers(): List<User> {
-        TODO("Not yet implemented")
-    }
 
     override suspend fun getAllPosts(): List<Post> {
         return databaseRef.child(Constants.POSTS).get().await()
@@ -128,12 +118,23 @@ class DatabaseFromFirebase @Inject constructor(
                 it.getValue(Post::class.java)!!
             }
     }
+    override suspend fun setUserDataInfoOnDatabase(user: User) {
+        databaseRef.child("users").child(user.id).setValue(user).await()
+    }
+
+    override suspend fun getCurrentUserData(id: String): User {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllUsers(): List<User> {
+        TODO("Not yet implemented")
+    }
 }
 
 
 class DatabaseFromCustomApi : Database {
 
-    override suspend fun setUserDataInfoOnDatabase(user: User): Task<Void> {
+    override suspend fun setUserDataInfoOnDatabase(user: User) {
         TODO("Not yet implemented")
     }
     override suspend fun getCurrentUserData(id: String): User {
@@ -148,6 +149,7 @@ class DatabaseFromCustomApi : Database {
     }
 
 }
+
 
 ```
 - Now We can depended on **abstractions (Database interface)** and not on **concretions (like Firebase or Custom Api)** by this way. The Datebase interface now is a **replaceable** with its childern classes and we will make our reposiory class take Database interface as argument like this: :heart:
