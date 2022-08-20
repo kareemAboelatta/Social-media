@@ -179,4 +179,4 @@ class RepositoryImp @Inject constructor(
 
 # Note 
 - And i achieve every principle and so imprtant design patterns too, Don't forget check the it :heart:
-- Don't forget support me by a star for encourge me to write more articales  :star:
+- Don't forget support me by a star  :star: for encourge me to write more articales 
