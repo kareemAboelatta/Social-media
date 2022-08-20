@@ -102,7 +102,7 @@ Components should depend on abstractions rather than concrete implementations. A
 /*
 As a abstractions, if want to get the database from the Mars, 
 I don't care just implement this interface 
-and do what you want in your own class and suit concretions(firebase, api,etc..)
+and do what you want in your own class and suit concretion (firebase, api,etc..)
 */
 interface Database {
 
