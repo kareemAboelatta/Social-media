@@ -18,15 +18,16 @@ class RepositoryAuthImp  @Inject constructor(
 
     private var database: Database,
     private var storager: Storage,
-    private var auth: Authenticator,
-    private var context: Context
+    private var auth: Authenticator
 ) : RepositoryAuth {
 
 
     override suspend fun createUser(
         email: String,
         password: String
-    ): AuthResult = auth.createUserWithEmailAndPassword(email, password).await()
+    ) {
+        auth.createUserWithEmailAndPassword(email, password)
+    }
 
 
     override suspend fun uploadUserPictureOnFireStorage(uri: Uri) :String {
@@ -34,18 +35,24 @@ class RepositoryAuthImp  @Inject constructor(
     }
 
     override suspend fun setUserDataInfoOnDatabase(user: User) {
-         database.setUserDataInfoOnDatabase(user).await()
+         database.setUserDataInfoOnDatabase(user)
     }
 
 
     override suspend fun signInWithEmailAndPassword(
         email: String,
         password: String
-    ): AuthResult = auth.signInWithEmailAndPassword(email, password)
+    ) {
+        auth.signInWithEmailAndPassword(email, password)
+    }
 
     override fun isUserLoggedIn(): Boolean {
         return auth.currentUserId() != null
     }
+
+    override fun getCurrentUerId(): String =
+        auth.currentUserId()!!
+
 
 
 }

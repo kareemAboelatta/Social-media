@@ -41,9 +41,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             viewModel.signInState.collect {
                 when (it) {
                     is Resource.Success -> {
+                        progress.visibility = View.GONE
                         Log.e("LoginFragment", "success")
                         Snackbar.make(
-                            requireView(), "Succddddddddess", Snackbar.LENGTH_LONG
+                            requireView(), "Success", Snackbar.LENGTH_SHORT
                         ).show()
                         //navigate to home fragment
                         val options = findNavController().deleteCurrentFragmentAfterNavigate()
@@ -53,16 +54,19 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         )
                     }
                     is Resource.Error -> {
+                        progress.visibility = View.GONE
                         Log.e("LoginFragment", "error" + it.message)
                         Snackbar.make(
-                            requireView(), "error" + it.message, Snackbar.LENGTH_LONG
+                            requireView(),  it.message.toString(), Snackbar.LENGTH_LONG
                         ).show()
+
                     }
                     is Resource.Loading -> {
                         Log.e("LoginFragment", "loading")
                         Snackbar.make(
                             requireView(), "loading", Snackbar.LENGTH_LONG
                         ).show()
+                        progress.visibility = View.VISIBLE
                     }
                 }
             }
@@ -87,7 +91,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         checkIfUserIsLoggedIn()
     }
 
-    fun checkIfUserIsLoggedIn() {
+    private fun checkIfUserIsLoggedIn() {
         if (viewModel.checkIfUserIsLoggedIn()){
             val options = findNavController().deleteCurrentFragmentAfterNavigate()
             findNavController().navigateSafely(

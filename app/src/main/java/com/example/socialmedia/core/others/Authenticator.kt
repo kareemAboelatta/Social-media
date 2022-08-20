@@ -8,14 +8,11 @@ import javax.inject.Inject
 
 interface Authenticator {
 
-    suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult
+    suspend fun signInWithEmailAndPassword(email: String, password: String)
 
     fun currentUserId() : String?
 
-    suspend fun createUserWithEmailAndPassword(email: String, password: String): Task<AuthResult>
-
-
-
+    suspend fun createUserWithEmailAndPassword(email: String, password: String)
 
 }
 
@@ -27,8 +24,8 @@ class FirebaseAuthenticator @Inject constructor(
     override suspend fun signInWithEmailAndPassword(
         email: String,
         password: String
-    ): AuthResult {
-        return  auth.signInWithEmailAndPassword(email, password).await()
+    ) {
+          auth.signInWithEmailAndPassword(email, password).await()
     }
 
     override fun currentUserId(): String? {
@@ -39,20 +36,18 @@ class FirebaseAuthenticator @Inject constructor(
     override suspend fun createUserWithEmailAndPassword(
         email: String,
         password: String
-    ): Task<AuthResult> {
-
-        return  auth.createUserWithEmailAndPassword(email, password)
+    ) {
+          auth.createUserWithEmailAndPassword(email, password).await()
     }
 
 
 }
 
 
-
 class CustomApiAuthenticator : Authenticator{
 
 
-    override suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult {
+    override suspend fun signInWithEmailAndPassword(email: String, password: String) {
         TODO("Not yet implemented")
     }
 
@@ -63,7 +58,7 @@ class CustomApiAuthenticator : Authenticator{
     override suspend fun createUserWithEmailAndPassword(
         email: String,
         password: String
-    ): Task<AuthResult> {
+    ){
         TODO("Not yet implemented")
     }
 

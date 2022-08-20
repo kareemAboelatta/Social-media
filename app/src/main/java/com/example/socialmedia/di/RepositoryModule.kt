@@ -57,17 +57,21 @@ object RepositoryModule {
         @ApplicationContext
         context: Context
     ): RepositoryAuth =
-        RepositoryAuthImp(database, storage, auth, context)
+        RepositoryAuthImp(database, storage, auth)
+
+
+
+
 
     @Singleton
     @Provides
     fun provideMainRepository(
-        database: Database,
-        storage: Storage,
-        auth: Authenticator,
-        @ApplicationContext
-        context: Context
-    ): Repository = RepositoryImp(database, storage, auth, context)
+        database: Database
+    ): Repository = RepositoryImp(database)
+
+
+
+
 
 
 }

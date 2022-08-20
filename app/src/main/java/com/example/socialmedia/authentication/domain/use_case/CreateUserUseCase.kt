@@ -22,8 +22,9 @@ class CreateUserUseCase  @Inject constructor(
     ): Flow<Resource<Boolean,String>> = flow {
         emit(Resource.Loading())
         try {
-           val result= repository.createUser(email, password)
-           var userId=result.user?.uid
+           repository.createUser(email, password)
+
+           var userId=repository.getCurrentUerId()
 
            val image =repository.uploadUserPictureOnFireStorage(image)
 

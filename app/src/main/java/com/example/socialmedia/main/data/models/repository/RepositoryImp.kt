@@ -7,23 +7,16 @@ import com.example.socialmedia.core.others.Database
 import com.example.socialmedia.core.others.Storage
 import com.example.socialmedia.main.data.models.Post
 import com.example.socialmedia.main.domain.Repository
+import com.google.firebase.database.DatabaseReference
 import javax.inject.Inject
 
 class RepositoryImp @Inject constructor(
-
-    private var database: Database,
-    private var storager: Storage,
-    private var auth: Authenticator,
-    private var context: Context
+    private var database: Database
 ) : Repository {
 
+    override suspend fun getPosts(): List<Post> = database.getAllPosts()
 
     override fun getUser(): User {
         TODO("Not yet implemented")
     }
-
-    override suspend fun getPosts(): List<Post> = database.getAllPosts()
-
-
-
 }

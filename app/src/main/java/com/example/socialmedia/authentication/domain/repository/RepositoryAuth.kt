@@ -9,14 +9,17 @@ import com.google.firebase.auth.AuthResult
 interface RepositoryAuth {
 
 
-    suspend fun createUser(email: String, password: String) : AuthResult
+    suspend fun createUser(email: String, password: String)
 
-    suspend fun uploadUserPictureOnFireStorage(uri: Uri):String
+    suspend fun uploadUserPictureOnFireStorage(uri: Uri): String
 
     suspend fun setUserDataInfoOnDatabase(user: User)
-     suspend fun signInWithEmailAndPassword(email: String, password: String): AuthResult
+    suspend fun signInWithEmailAndPassword(email: String, password: String)
 
-     abstract fun isUserLoggedIn(): Boolean
+    fun isUserLoggedIn(): Boolean
 
+    fun getCurrentUerId():String
+
+    fun notImportantForAll() {}
 
 }
