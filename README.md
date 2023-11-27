@@ -54,18 +54,27 @@ fun provideMainRepository(
 
 The RepositoryImp can replace its parent Repository type without altering the expected behavior.
 
-### :ok_woman:  Interface Segregation Principle (ISP)
-We embrace focused interfaces over monolithic ones. Our RepositoryAuth interface is an epitome of this, where optional implementations are provided with default methods:
+
+### :ok_woman: Interface Segregation Principle (ISP)
+We adhere to focused interfaces rather than monolithic ones, which aligns with the Interface Segregation Principle (ISP). Our design philosophy avoids large, cumbersome interfaces that burden classes with unnecessary implementations. Instead, we advocate for creating separate interfaces, each tailored for specific client entities. This strategic partitioning ensures that a class only implements the interfaces whose methods are required for its unique functionality.
+
+For cases where it's necessary to provide common functionality across all implementing classes, we utilize the default body approach in Kotlin. This allows us to define default implementations for interface methods:
 
 ```kotlin
 interface RepositoryAuth {
-    fun notImportantForAll() {}
-    // Essential methods...
+    fun notImportantForAll() {
+        // Default implementation
+    }
+    // Other essential abstract methods...
 }
-
 ```
 
-This prevents classes from being forced to implement methods that they don't need.
+This method is part of the RepositoryAuth interface, but it doesn't force all implementing classes to override it if the functionality is not required, adhering to ISP while maintaining flexibility.
+
+This prevents classes from being forced to :muscle: implement methods that they don't need.
+
+
+
 
 ### :electric_plug: Dependency Inversion Principle (DIP)
 Our components depend on abstractions, not on concrete implementations, allowing for flexible data sources:
