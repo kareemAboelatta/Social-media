@@ -80,9 +80,10 @@ This prevents classes from being forced to :muscle: implement methods that they 
 Our components depend on abstractions, not on concrete implementations, allowing for flexible data sources:
 ```kotlin
 class RepositoryImp @Inject constructor(
-    private var database: Database
+    private var database: Database //This can be injected as firebase_implementation or Api_implementation
 ) : Repository {
     // Utilizes Database abstraction, not a specific implementation
+    // The Change will be just in DataSource(Authenticator or our Database)
 }
 
 ```
